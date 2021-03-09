@@ -28,7 +28,7 @@ public class UserDB {
                 String first_name = rs.getString(3);
                 String last_name = rs.getString(4);
                 String password = rs.getString(5);
-                String role = rs.getString(6);
+                int role = rs.getInt(6);
                 User user = new User(email, active, first_name, last_name, password, role);
                 users.add(user);
             }
@@ -59,7 +59,7 @@ public class UserDB {
                 String first_name = rs.getString(3);
                 String last_name = rs.getString(4);
                 String password = rs.getString(5);
-                String role = rs.getString(6);
+                int role = rs.getInt(6);
                 user = new User(email, active, first_name, last_name, password, role);
             }
         } finally {
@@ -84,7 +84,7 @@ public class UserDB {
             ps.setString(3, user.getFirstName());
             ps.setString(4, user.getLastName());
             ps.setString(5, user.getPassword());
-            ps.setString(6, user.getRole());
+            ps.setInt(6, user.getRole());
             ps.executeUpdate();
         } finally {
             DBUtil.closePreparedStatement(ps);
@@ -105,7 +105,7 @@ public class UserDB {
             ps.setString(3, user.getFirstName());
             ps.setString(4, user.getLastName());
             ps.setString(5, user.getPassword());
-            ps.setString(6, user.getRole());
+            ps.setInt(6, user.getRole());
             ps.executeUpdate();
         } finally {
             DBUtil.closePreparedStatement(ps);
