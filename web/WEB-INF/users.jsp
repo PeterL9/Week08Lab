@@ -13,38 +13,25 @@
         <title>Users</title>
     </head>
     <body>
+        <h1>Manage Users</h1>
         <form action="update" method="POST">
-            <table>
+            <table style="width:50%; text-align: left;">
                 <tr>
-                    <th>Email</th>
-                    <th>S</th>
-                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Role</th>
                     <th>Email</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
 
                     <tr>
-                        <td>${user.email}</td>
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>                        
-                        <td>${user.role}</td>
+                        <td>${user.role}</td> 
+                        <td>${user.email}</td>
                     </tr>
                 </c:forEach>
             </table>
-            <h1>Manage Users</h1>
-            Email: <br>
-            Active: <br>
-            First Name: <br>
-            Last Name: <br>
-            Password: <br>
-            Role: 
-            <select name="roles" id="roles">
-                <option value="sysadmin">System Admin</option>
-                <option value="regularuser">Regular User</option>
-                <option value="companyuser">Company Admin</option>
-            </select> <br>
-            <input type="submit" value="Save Changes">
-        </form>
 
         <form action="create" method="POST">
             <h1>Add User</h1>
