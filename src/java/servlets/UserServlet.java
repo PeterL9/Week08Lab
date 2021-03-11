@@ -5,8 +5,8 @@
  */
 package servlets;
 
-import business.RoleServices;
-import business.UserServices;
+import business.RoleService;
+import business.UserService;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +26,8 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RoleServices rs = new RoleServices();
-        UserServices us = new UserServices();
+        RoleService rs = new RoleService();
+        UserService us = new UserService();
 
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
@@ -44,8 +44,8 @@ public class UserServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        RoleServices rs = new RoleServices();
-        UserServices us = new UserServices();
+        RoleService rs = new RoleService();
+        UserService us = new UserService();
 
         String action = request.getParameter("action");
         //more STRINGS should be filled down the road

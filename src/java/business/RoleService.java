@@ -13,7 +13,7 @@ import models.User;
  *
  * @author 843876
  */
-public class RoleServices {
+public class RoleService {
     
 
 }

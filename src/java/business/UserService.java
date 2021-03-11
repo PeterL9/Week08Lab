@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author 843876
  */
-public class UserServices {
+public class UserService {
     
        public List<User> getAll(String email) throws Exception{
            UserDB userdb = new UserDB();
