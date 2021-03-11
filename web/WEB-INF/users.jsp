@@ -13,6 +13,50 @@
         <title>Users</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="update" method="POST">
+            <h1>Manage Users</h1>
+            Email: <br>
+            Active: <br>
+            First Name: <br>
+            Last Name: <br>
+            Password: <br>
+            Role: 
+            <select name="roles" id="roles">
+                <option value="sysadmin">System Admin</option>
+                <option value="sysadmin">Regular User</option>
+                <option value="sysadmin">Company Admin</option>
+            </select> <br>
+            <input type="submit" value="Save Changes">
+        </form>
+        
+        <form action="create" method="POST">
+            <h1>Add User</h1>
+            Email: <input type="text" name="email"> <br>
+            First Name: <input type="text" name="firstName"> <br>
+            Last Name: <input type="text" name="lastName"> <br>
+            Password: <input type="text" name="password"> <br>
+            Role:             
+            <select name="roles" id="roles">
+                <option value="sysadmin">System Admin</option>
+                <option value="sysadmin">Regular User</option>
+                <option value="sysadmin">Company Admin</option>
+            </select> <br>
+        </form>
+
+        <form action="delete" method="POST">
+              <h1>Edit / Delete User</h1>
+            Email: <br>
+            First Name: <br>
+            Last Name: <br>
+            Role: 
+            <select name="roles" id="roles">
+                <option value="sysadmin">System Admin</option>
+                <option value="sysadmin">Regular User</option>
+                <option value="sysadmin">Company Admin</option>
+            </select> <br>
+            <input type="submit" value="Save Changes">
+            <input type="submit" value="Delete">
+            <input type="submit" value="Cancel">
+        </form>
     </body>
 </html>
