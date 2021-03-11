@@ -41,20 +41,20 @@ public class UserDB {
         return users;
     }
 
-    public User get(int noteId) throws Exception {
+    public User get(String email) throws Exception {
         User user = null;
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM user where email=?";
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, noteId);
+            ps.setString(1, email);
             rs = ps.executeQuery();
             if (rs.next()) {
-                String email = rs.getString(1);
+                email = rs.getString(1);
                 Boolean active = rs.getBoolean(2);
                 String first_name = rs.getString(3);
                 String last_name = rs.getString(4);
