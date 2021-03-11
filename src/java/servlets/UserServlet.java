@@ -8,13 +8,16 @@ package servlets;
 import business.RoleService;
 import business.UserService;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-/*import models.Role;
-import models.User;*/
+import models.Role;
+import models.User;
 
 /**
  *
@@ -30,11 +33,16 @@ public class UserServlet extends HttpServlet {
         UserService us = new UserService();
 
         HttpSession session = request.getSession();
-        String action = request.getParameter("action");
+        try {
+            List<Role> roles = rs.getAll();
+            request.setAttribute("roles", roles);
+            List<User> users = us.getAll();
+            request.setAttribute("users", users);
+            String action = request.getParameter("action");
+        } catch (Exception ex) {
+            Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        /*Role role = rs.get(role, name);
-        User user = us.get(email, active, firstName, lastName password, role);*/
-        
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
 
@@ -61,10 +69,11 @@ public class UserServlet extends HttpServlet {
                 us.delete(email);
         }*/
         request.setAttribute("message", action);
-        
-        /*List<User> users = us.getAll(email);
-        request.setAttribute("users", users);*/
 
+        /*Role role = rs.get(role, name);
+        List<User> users = us.getAll(email);
+        request.setAttribute("roles", roles);
+        request.setAttribute("users", users);*/
         getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
 

@@ -14,6 +14,23 @@
     </head>
     <body>
         <form action="update" method="POST">
+            <table>
+                <tr>
+                    <th>Email</th>
+                    <th>S</th>
+                    <th>Email</th>
+                    <th>Email</th>
+                </tr>
+                <c:forEach items="${users}" var="user">
+
+                    <tr>
+                        <td>${user.email}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>                        
+                        <td>${user.role}</td>
+                    </tr>
+                </c:forEach>
+            </table>
             <h1>Manage Users</h1>
             Email: <br>
             Active: <br>
@@ -23,12 +40,12 @@
             Role: 
             <select name="roles" id="roles">
                 <option value="sysadmin">System Admin</option>
-                <option value="sysadmin">Regular User</option>
-                <option value="sysadmin">Company Admin</option>
+                <option value="regularuser">Regular User</option>
+                <option value="companyuser">Company Admin</option>
             </select> <br>
             <input type="submit" value="Save Changes">
         </form>
-        
+
         <form action="create" method="POST">
             <h1>Add User</h1>
             Email: <input type="text" name="email"> <br>
@@ -38,21 +55,24 @@
             Role:             
             <select name="roles" id="roles">
                 <option value="sysadmin">System Admin</option>
-                <option value="sysadmin">Regular User</option>
-                <option value="sysadmin">Company Admin</option>
-            </select> <br>
+                <option value="regularuser">Regular User</option>
+                <option value="companyuser">Company Admin</option>
+            </select>
+
+            <br><input type="submit" value="add User">
+
         </form>
 
         <form action="delete" method="POST">
-              <h1>Edit / Delete User</h1>
+            <h1>Edit / Delete User</h1>
             Email: <br>
             First Name: <br>
             Last Name: <br>
             Role: 
             <select name="roles" id="roles">
                 <option value="sysadmin">System Admin</option>
-                <option value="sysadmin">Regular User</option>
-                <option value="sysadmin">Company Admin</option>
+                <option value="regularuser">Regular User</option>
+                <option value="companyuser">Company Admin</option>
             </select> <br>
             <input type="submit" value="Save Changes">
             <input type="submit" value="Delete">

@@ -20,9 +20,9 @@ import java.util.List;
  */
 public class UserService {
     
-       public List<User> getAll(String email) throws Exception{
+       public List<User> getAll() throws Exception{
            UserDB userdb = new UserDB();
-           List<User> user = userdb.getAll(email);
+           List<User> user = userdb.getAll();
            return user;
        }
        

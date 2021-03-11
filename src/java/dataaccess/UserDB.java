@@ -9,18 +9,18 @@ import models.User;
 
 public class UserDB {
 
-    public List<User> getAll(String owner) throws Exception {
+    public List<User> getAll() throws Exception {
         List<User> users = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT * FROM note WHERE owner=?";
+        String sql = "SELECT * FROM user";
         
         try {
             ps = con.prepareStatement(sql);
-            ps.setString(1, owner);
+            
             rs = ps.executeQuery();
             while (rs.next()) {
                 String email = rs.getString(1);
