@@ -55,10 +55,10 @@
 
         <form action="users?action=delete" method="POST">
             <h1>Edit / Delete User</h1>
-            Email: <h3 name="email"></h3><br>
-            First Name: <h3 name="firstName"></h3><br>
-            Last Name: <h3 name="lastName"></h3><br>
-            Role: <h3 name="email"></h3>
+            Email: <p name="email"></p>
+            First Name: <p name="firstName"></p>
+            Last Name: <p name="lastName"></p>
+            Role: <p name="email"></p>
             <select name="roles" id="roles">
                 <option value="sysadmin">System Admin</option>
                 <option value="regularuser">Regular User</option>
