@@ -60,8 +60,7 @@ public class UserServlet extends HttpServlet {
         }
 
         if (action.equals("delete")) {
-
-            String emailToBeDeleted = (String) request.getParameter("deleteradiobutton");
+            String emailToBeDeleted = (String) request.getParameter("radiobutton");
             UserService us = new UserService();
             try {
                 us.delete(emailToBeDeleted);
@@ -81,7 +80,6 @@ public class UserServlet extends HttpServlet {
         }
         
         if (action.equals("edit")) {
-            
             String email = (String) request.getParameter("emailToEdit");
             String firstName = (String) request.getParameter("firstNameToEdit");
             String lastName = (String) request.getParameter("lastNameToEdit");
