@@ -16,20 +16,20 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT email, active, first_name, last_name, password, role, role_name FROM user, role WHERE role = role_id";
         
         try {
             ps = con.prepareStatement(sql);
-            
             rs = ps.executeQuery();
             while (rs.next()) {
                 String email = rs.getString(1);
                 boolean active = rs.getBoolean(2);
-                String first_name = rs.getString(3);
-                String last_name = rs.getString(4);
+                String firstName = rs.getString(3);
+                String lastName = rs.getString(4);
                 String password = rs.getString(5);
-                int role = rs.getInt(6);
-                User user = new User(email, active, first_name, last_name, password, role);
+                int roleID = rs.getInt(6);
+                String roleName = rs.getString(7);
+                User user = new User(email, active, firstName, lastName, password, roleID, roleName);
                 users.add(user);
             }
         } finally {
@@ -37,7 +37,6 @@ public class UserDB {
             DBUtil.closePreparedStatement(ps);
             cp.freeConnection(con);
         }
-
         return users;
     }
 
@@ -47,20 +46,19 @@ public class UserDB {
         Connection con = cp.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM user where email=?";
+        String sql = "SELECT * FROM user WHERE email =?";
         
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery();
             if (rs.next()) {
-                email = rs.getString(1);
-                Boolean active = rs.getBoolean(2);
-                String first_name = rs.getString(3);
-                String last_name = rs.getString(4);
+                boolean active = rs.getBoolean(2);
+                String firstName = rs.getString(3);
+                String lastName = rs.getString(4);
                 String password = rs.getString(5);
-                int role = rs.getInt(6);
-                user = new User(email, active, first_name, last_name, password, role);
+                int roleID = rs.getInt(6);
+                user = new User(email, active, firstName, lastName, password, roleID);
             }
         } finally {
             DBUtil.closeResultSet(rs);
@@ -84,7 +82,7 @@ public class UserDB {
             ps.setString(3, user.getFirstName());
             ps.setString(4, user.getLastName());
             ps.setString(5, user.getPassword());
-            ps.setInt(6, user.getRole());
+            ps.setInt(6, user.getRoleID());
             ps.executeUpdate();
         } finally {
             DBUtil.closePreparedStatement(ps);
@@ -104,7 +102,7 @@ public class UserDB {
             ps.setString(2, user.getFirstName());
             ps.setString(3, user.getLastName());
             ps.setString(4, user.getPassword());
-            ps.setInt(5, user.getRole());
+            ps.setInt(5, user.getRoleID());
             ps.setString(6, user.getEmail());
             ps.executeUpdate();
         } finally {
@@ -112,7 +110,6 @@ public class UserDB {
             cp.freeConnection(con);
         }
     }
-    
 
     public void delete(User user) throws Exception {
         ConnectionPool cp = ConnectionPool.getInstance();
@@ -129,5 +126,4 @@ public class UserDB {
             cp.freeConnection(con);
         }
     }
-
 }
